@@ -4,7 +4,7 @@ Em Java, todas as classes são implicitamente subtipos da classe `Object`. Isso 
 Uma dessas operações básicas é o método `toString()`. O método `toString()` está definido na classe `Object` como:
 ```java
 public String toString() {
-    return getClass().getName() + "@" + Integer.toHexString(hashCode()); // domain.Car@2d5e5fs
+    return getClass().getName() + "@" + Integer.toHexString(hashCode()); // domain.Car@2d5e5f3
 }
 ```
 A representação padrão fornecida pelo método `toString()` inclui o nome da classe seguido pelo código hash hexadecimal do objeto. Essa representação padrão pode não ser muito informativa ou útil.
