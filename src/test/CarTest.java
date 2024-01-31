@@ -1,4 +1,4 @@
-package test.test;
+package test;
 
 import domain.Car;
 
@@ -15,12 +15,10 @@ public class CarTest {
 		car2.model = "Model S";
 		car2.year = 2012;
 
-		System.out.println(car.name);
-		System.out.println(car.model);
-		System.out.println(car.year);
-		
-		System.out.println(car2.name);
-		System.out.println(car2.model);
-		System.out.println(car2.year);
+        car.start(car.name);
+        car.accelerate(car.name, 50);
+
+        car2.start(car2.name);
+        car2.accelerate(car2.name, 50);
     }
 }

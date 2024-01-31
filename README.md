@@ -1,66 +1,69 @@
-# A classe Object
-Em Java, todas as classes são implicitamente subtipos da classe `Object`. Isso significa que, por padrão, todas as classes herdam características e comportamentos da classe `Object`. A classe `Object` fornece métodos básicos que podem ser sobrescritos ou utilizados diretamente pelas classes derivadas.
-## O método `toString()`
-Uma dessas operações básicas é o método `toString()`. O método `toString()` está definido na classe `Object` como:
-```java
-public String toString() {
-    return getClass().getName() + "@" + Integer.toHexString(hashCode()); // domain.Car@2d5e5fs
-}
-```
-A representação padrão fornecida pelo método `toString()` inclui o nome da classe seguido pelo código hash hexadecimal do objeto. Essa representação padrão pode não ser muito informativa ou útil.
+# Métodos
+Métodos em POO são usados para representar comportamentos e ações que objetos de uma classe específica podem realizar. Eles ajudam a encapsular a lógica de implementação associada aos objetos, proporcionando uma forma organizada de interação com as instâncias da classe.
 
-Ao sobrescrever o método `toString()` em uma classe derivada, você pode fornecer uma representação mais significativa e legível para o seu objeto. Isso é especialmente útil ao imprimir ou converter objetos para strings. A assinatura do método `toString()` é a seguinte:
+A assinatura de um método inclui o tipo de retorno, o nome do método e, opcionalmente, parâmetros.
 ```java
-public String toString() {
-    // Código para criar e retornar a representação da string desejada
+public void accelerate(int speed) {
+    System.out.println("Vroom! The car is accelerating to " + speed);
 }
 ```
-Aqui está um exemplo de como você pode sobrescrever o método `toString()` na classe `Carro` do exemplo anterior:
+Aqui está um exemplo de métodos que podemos criar na classe `Car` dos exemplos anteriores:
 ```java
 package domain;
 
-/* Representa a abstração de um carro
-*
-* @param name nome do carro
-* @param model modelo do carro
-* @param year ano de lançamento
-*
-* @return Um objeto do tipo carro com nome, modelo e ano de lançamento
-*/
-public  class  Car {
+/**
+ * Representa a abstração de um carro
+ * 
+ * @param name  nome do carro
+ * @param model modelo do carro
+ * @param year  ano de lançamento
+ * 
+ * @return Um objeto do tipo carro com nome, modelo e ano de lançamento
+ */
+public class Car {
   // Atributos (características de um carro)
-  public  String name;
-  public  String model;
-  public  int year;
+  public String name;
+  public String model;
+  public int year;
+
+  public void start(String name) {
+    System.out.println("Turning on the " + name + "!!");
+  }
+
+  public void accelerate(String name, int speed) {
+    System.out.println("Vroom! The car " + name + " is accelerating to " + speed);
+  }
 
   @Override
   public String toString() {
-      return "Car [name=" + name + ", model=" + model + ", year=" + year + "]";
+    return "Car [name=" + name + ", model=" + model + ", year=" + year + "]";
   }
 }
 ```
-A anotação `@Override` é usada para indicar que a intenção é sobrescrever um método da classe pai (`Object`, neste caso). Ao fazer isso, quando você chama `toString()` em uma instância da classe `Carro`, você obtém a representação personalizada fornecida pelo método sobrescrito.
+Os métodos criados podem então, ser chamados a partir das instâncias de `Car` que foram criadas:
 ```java
 package test.test;
 
 import domain.Car;
 
-public  class  CarTest {
-  public  static  void  main(String[] args) {
+public class CarTest {
+  public static void main(String[] args) {
     Car car = new Car();
     Car car2 = new Car();
-
+  
     car.name = "Fusca";
     car.model = "Classico";
     car.year = 1968;
-
+  
     car2.name = "Tesla";
     car2.model = "Model S";
     car2.year = 2012;
 
-    System.out.println(car);
-    System.out.println(car2);
+    car.start(car.name);
+    car.accelerate(car.name, 50);
+
+    car2.start(car2.name);
+    car2.accelerate(car2.name, 50);
   }
 }
 ```
-Note que a chamada do método `toString()` é opcional, porque o método é invocado automaticamente. 
