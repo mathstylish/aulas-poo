@@ -15,7 +15,7 @@ public String toString() {
     // Código para criar e retornar a representação da string desejada
 }
 ```
-Aqui está um exemplo de como você pode sobrescrever o método `toString()` na classe `Carro` do exemplo anterior:
+Aqui está um exemplo de como você pode sobrescrever o método `toString()` na classe `Car` do exemplo anterior:
 ```java
 package domain;
 
@@ -39,9 +39,9 @@ public  class  Car {
   }
 }
 ```
-A anotação `@Override` é usada para indicar que a intenção é sobrescrever um método da classe pai (`Object`, neste caso). Ao fazer isso, quando você chama `toString()` em uma instância da classe `Carro`, você obtém a representação personalizada fornecida pelo método sobrescrito.
+A anotação `@Override` é usada para indicar que a intenção é sobrescrever um método da classe pai (`Object`, neste caso). Ao fazer isso, quando você chama `toString()` em uma instância da classe `Car`, você obtém a representação personalizada fornecida pelo método sobrescrito.
 ```java
-package test.test;
+package test;
 
 import domain.Car;
 
