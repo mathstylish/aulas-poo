@@ -85,8 +85,8 @@ public class Car {
 }
 ```
 O código dentro do construtor será executado na sua chamada sem problemas.
-## Preciso repetir parâmetros sempre que sobrecarregar o construtor?
-Não, podemos criar construtores com assinaturas diferentes mas reutilizar o código de inicialização de outro construtor.
+## Preciso repetir a inicialização de todos os atributos sempre que sobrecarregar o construtor?
+Não, podemos criar construtores com assinaturas diferentes mas reutilizar o código de inicialização de outro construtor, onde eles irão inicializar os atributos.
 
 Lembra que a palavra-chave `this` representa a classe? Então `this()` seria o construtor vazio dessa classe. A JVM continua sabendo quem chamar graças a assinatura.
 ```java
