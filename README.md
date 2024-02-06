@@ -1,69 +1,45 @@
-# Métodos
-Métodos em POO são usados para representar comportamentos e ações que objetos de uma classe específica podem realizar. Eles ajudam a encapsular a lógica de implementação associada aos objetos, proporcionando uma forma organizada de interação com as instâncias da classe.
+# Sobrecarga de métodos
+Sobrecarga de métodos em Java refere-se a capacidade de termos múltiplos métodos com o mesmo nome, mas com assinaturas diferentes (quantidade de parâmetros ou tipos diferentes de dados).
 
-A assinatura de um método inclui o tipo de retorno, o nome do método e, opcionalmente, parâmetros.
+Lembrando que assinatura de um método tem a seguinte estrutura (não vamos levar em conta modificadores de acesso ainda):
+`<tipo-retorno> <nome> (<tipo-parametro><nome>, <tipo-parametro><nome>)`
+
+Imagine uma classe que representa uma Calculadora e nela queremos ter um único método chamado `sum` que pode ter as seguintes sobrecargas:
+- Somar dois números inteiros
+- Somar três números inteiros
+- Somar quatro números flutuantes
+
 ```java
-public void accelerate(int speed) {
-    System.out.println("Vroom! The car is accelerating to " + speed);
-}
-```
-Aqui está um exemplo de métodos que podemos criar na classe `Car` dos exemplos anteriores:
-```java
-package domain;
-
-/**
- * Representa a abstração de um carro
- * 
- * @param name  nome do carro
- * @param model modelo do carro
- * @param year  ano de lançamento
- * 
- * @return Um objeto do tipo carro com nome, modelo e ano de lançamento
- */
-public class Car {
-  // Atributos (características de um carro)
-  public String name;
-  public String model;
-  public int year;
-
-  public void start(String name) {
-    System.out.println("Turning on the " + name + "!!");
+public class Calculator {
+  public int sum(int a, int b) {
+    return a + b;
   }
 
-  public void accelerate(String name, int speed) {
-    System.out.println("Vroom! The car " + name + " is accelerating to " + speed);
+  public int sum(int a, int b, int c) {
+    return a + b + c;
   }
 
-  @Override
-  public String toString() {
-    return "Car [name=" + name + ", model=" + model + ", year=" + year + "]";
+  public double sum(double a, double b, double c, double d) {
+    return a + b + c + d;
   }
 }
 ```
-Os métodos criados podem então, ser chamados a partir das instâncias de `Car` que foram criadas:
+Repare que o nome do método continua sendo `sum`, porém o tipo de retorno, o tipo e a quantidade dos parâmetros mudaram.
+Os métodos criados podem então, ser chamados a partir da instância de `Calculator` que foi criada:
 ```java
-package test.test;
-
-import domain.Car;
-
-public class CarTest {
+public class CalculatorTest {
   public static void main(String[] args) {
-    Car car = new Car();
-    Car car2 = new Car();
-  
-    car.name = "Fusca";
-    car.model = "Classico";
-    car.year = 1968;
-  
-    car2.name = "Tesla";
-    car2.model = "Model S";
-    car2.year = 2012;
+    Calculator calc = new Calculator();
 
-    car.start(car.name);
-    car.accelerate(car.name, 50);
+    // chamada para dois números inteiros
+    System.out.println(calc.sum(3, 2)); // 5
 
-    car2.start(car2.name);
-    car2.accelerate(car2.name, 50);
+    // chamada para três números inteiros
+    System.out.println(calc.sum(3, 2, 6)); // 12
+
+    // chamada para quatro números flutuantes
+    System.out.println(calc.sum(1.5, 2.5, 5.5, 6.4)); // 15.9
   }
 }
 ```
+Baseado na assinatura, a JVM sabe exatamente qual método chamar para realizar as operações. Pode não parecer algo que faça sentido utilizar, mas a API do Java tem inúmeros métodos sobrecarregados que serão vistos mais a frente.
